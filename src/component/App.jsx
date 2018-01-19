@@ -219,55 +219,70 @@
 //     }
 // }
 // export default App;
+
+// import ReactDOM from 'react-dom';
+//
+// class App extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {value: 'coconut'};
+//
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+//
+//     handleChange(event) {
+//         this.setState({value: event.target.value});
+//     }
+//
+//     handleSubmit(event) {
+//         alert('Your favorite flavor is: ' + this.state.value);
+//         event.preventDefault();
+//     }
+//
+//     render() {
+//         return (
+//             <form onSubmit={this.handleSubmit}>
+//                 <label>
+//                     Pick your favorite La {this.state.value}:
+//                     <select value={this.state.value} onChange={this.handleChange}>
+//                         <option value="grapefruit">Grapefruit</option>
+//                         <option value="lime">Lime</option>
+//                         <option value="coconut">Coconut</option>
+//                         <option value="mango">Mango</option>
+//                     </select>
+//                 </label>
+//                 <input type="submit" value="Submit" />
+//             </form>
+//         );
+//     }
+// }
+// export default App;
+// class Square extends React.Component {
+//     render() {
+//         return (
+//             <button className="square">
+//                 {this.props.value}
+//             </button>
+//         );
+//     }
+// }\
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import React from 'react';
 import './../index.css';
-import ReactDOM from 'react-dom';
-
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: 'coconut'};
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        alert('Your favorite flavor is: ' + this.state.value);
-        event.preventDefault();
-    }
-
+import Auth from "./Auth";
+class App extends React.Component
+{
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Pick your favorite La {this.state.value}:
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="grapefruit">Grapefruit</option>
-                        <option value="lime">Lime</option>
-                        <option value="coconut">Coconut</option>
-                        <option value="mango">Mango</option>
-                    </select>
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <Switch>
+                <Route exact path='/home' component={Home}/>
+                <Route path='/login' component={Login}/>
+                <Route path='/auth' component={Auth}/>
+            </Switch>
         );
     }
 }
 export default App;
-class Square extends React.Component {
-    render() {
-        return (
-            <button className="square">
-                {this.props.value}
-            </button>
-        );
-    }
-}
